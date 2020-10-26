@@ -8,6 +8,8 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import ListarClientes from '../screens/ListarClientes'
+import Cadastro from '../screens/Cadastro'
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -32,6 +34,27 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
+
+<BottomTab.Screen
+        name="ListarClientes"
+        component={ListarClientesNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+
+
+<BottomTab.Screen
+        name="Cadastro"
+        component={CadastroNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+
+
+
+
     </BottomTab.Navigator>
   );
 }
@@ -71,3 +94,39 @@ function TabTwoNavigator() {
     </TabTwoStack.Navigator>
   );
 }
+
+
+
+const ListarClientesStack = createStackNavigator();
+
+function ListarClientesNavigator() {
+  return (
+    <ListarClientesStack.Navigator>
+      <ListarClientesStack.Screen
+        name="ListarClientes"
+        component={ListarClientes}
+        options={{ headerTitle: 'Lista de Clientes' }}
+      />
+    </ListarClientesStack.Navigator>
+  );
+}
+
+
+const CadastroStack = createStackNavigator();
+
+function CadastroNavigator() {
+  return (
+    <CadastroStack.Navigator>
+      <CadastroStack.Screen
+        name="Cadastro"
+        component={Cadastro}
+        options={{ headerTitle: 'Cadastro de Clientes' }}
+      />
+    </CadastroStack.Navigator>
+  );
+}
+
+
+
+
+
